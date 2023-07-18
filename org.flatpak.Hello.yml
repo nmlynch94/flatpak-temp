@@ -30,7 +30,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/nmlynch94/Bolt.git
-        commit: f0e81cb925e08c391c5ff04b4137264be22b4717
+        commit: e8f0038705cc6339f930eb6447719ed1ee3a32d4
   - name: zypak
     sources:
       - type: git

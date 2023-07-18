@@ -21,6 +21,6 @@ modules:
       - cmake --build build
       - cmake --install build --prefix /app
     sources:
-      - type: archive
-        url: https://github.com/nmlynch94/Bolt/archive/refs/heads/master.zip
+      - type: git
+        url: https://github.com/nmlynch94/Bolt.git
         sha256: 275849128d86951d4e531f7a7f9e26c05a791ae6c45e95be265a936cb9f7f73d

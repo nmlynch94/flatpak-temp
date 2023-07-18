@@ -11,9 +11,9 @@ modules:
       - mkdir -p /app/cef/dist
       - mv ./* /app/cef/dist
     sources:
-    - type: archive
-      url: https://adamcake.com/cef/cef-114.0.5735.134-linux64-ungoogled.tar.gz
-      sha256: 15c2d5ebdd5241fd50ea4a0c80c2811977ab56b78c59dcd615a1e3e82394d68f
+      - type: archive
+        url: https://adamcake.com/cef/cef-114.0.5735.134-linux64-ungoogled.tar.gz
+        sha256: 15c2d5ebdd5241fd50ea4a0c80c2811977ab56b78c59dcd615a1e3e82394d68f
   - name: bolt
     buildsystem: simple
     build-commands:

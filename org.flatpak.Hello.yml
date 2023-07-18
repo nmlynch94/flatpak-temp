@@ -5,13 +5,12 @@ runtime-version: '44'
 sdk: org.gnome.Sdk
 command:  bolt
 finish-args:
+  - --share=ipc
   - --socket=x11
-  - --socket=wayland
   - --socket=pulseaudio
-  - --device=all
   - --share=network
-  - --allow=multiarch
-  - --filesystem=home
+  - --device=all
+  - --persist=Jagex
 modules:
   - name: cef
     buildsystem: simple
@@ -38,3 +37,14 @@ modules:
         url: https://github.com/refi64/zypak
         tag: v2022.04
         commit: 55a60d110301e8dd37b631503c3524ab7baaf7aa
+  - shared-modules/gtk2/gtk2.json
+  - name: openssl
+    buildsystem: simple
+    build-commands:
+      - ./config --prefix=/app --openssldir=/app/ssl shared zlib
+      - make -j $FLATPAK_BUILDER_N_JOBS
+      - make install
+    sources:
+      - type: archive
+        url: https://www.openssl.org/source/openssl-1.1.1q.tar.gz
+        sha256: d7939ce614029cdff0b6c20f0e2e5703158a489a72b2507b8bd51bf8c8fd10ca

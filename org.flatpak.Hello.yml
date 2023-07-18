@@ -30,13 +30,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/nmlynch94/Bolt.git
-        commit: e8f0038705cc6339f930eb6447719ed1ee3a32d4
-  - name: zypak
-    sources:
-      - type: git
-        url: https://github.com/refi64/zypak
-        tag: v2022.04
-        commit: 55a60d110301e8dd37b631503c3524ab7baaf7aa
+        commit: 1f140e922731ab10263fd616c5435a8df968d6da
   - shared-modules/gtk2/gtk2.json
   - name: openssl
     buildsystem: simple

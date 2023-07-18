@@ -1,9 +1,11 @@
 app-id: org.flatpak.Hello
 default-branch: stable
-runtime: org.gnome.Platform
-runtime-version: '44'
-sdk: org.gnome.Sdk
-command:  bolt
+base: org.electronjs.Electron2.BaseApp
+base-version: '22.08'
+runtime: org.freedesktop.Platform
+runtime-version: '22.08'
+sdk: org.freedesktop.Sdk
+command: bolt-run.sh
 finish-args:
   - --share=ipc
   - --socket=x11
@@ -24,13 +26,23 @@ modules:
   - name: bolt
     buildsystem: simple
     build-commands:
+      - mkdir -p /app/bin
+      - mv bolt-run.sh /app/bin/bolt-run.sh
       - cmake -S . -B build -G Ninja -D CMAKE_BUILD_TYPE=Release
       - cmake --build build
       - cmake --install build --prefix /app
     sources:
+      - type: file
+        path: bolt-run.sh
       - type: git
         url: https://github.com/nmlynch94/Bolt.git
-        commit: 1f140e922731ab10263fd616c5435a8df968d6da
+        commit: f0e81cb925e08c391c5ff04b4137264be22b4717 
+  - name: zypak
+    sources:
+      - type: git
+        url: https://github.com/refi64/zypak
+        tag: v2022.04
+        commit: 55a60d110301e8dd37b631503c3524ab7baaf7aa
   - shared-modules/gtk2/gtk2.json
   - name: openssl
     buildsystem: simple

@@ -3,7 +3,15 @@ default-branch: stable
 runtime: org.gnome.Platform
 runtime-version: '44'
 sdk: org.gnome.Sdk
-command: bolt
+command:  bolt
+finish-args:
+  - --socket=x11
+  - --socket=wayland
+  - --socket=pulseaudio
+  - --device=all
+  - --share=network
+  - --allow=multiarch
+  - --filesystem=home
 modules:
   - name: cef
     buildsystem: simple
@@ -11,9 +19,9 @@ modules:
       - mkdir -p /app/cef/dist
       - mv ./* /app/cef/dist
     sources:
-      - type: archive
-        url: https://adamcake.com/cef/cef-114.0.5735.134-linux64-ungoogled.tar.gz
-        sha256: 15c2d5ebdd5241fd50ea4a0c80c2811977ab56b78c59dcd615a1e3e82394d68f
+    - type: archive
+      url: https://adamcake.com/cef/cef-114.0.5735.134-linux64-ungoogled.tar.gz
+      sha256: 15c2d5ebdd5241fd50ea4a0c80c2811977ab56b78c59dcd615a1e3e82394d68f
   - name: bolt
     buildsystem: simple
     build-commands:
@@ -23,4 +31,10 @@ modules:
     sources:
       - type: git
         url: https://github.com/nmlynch94/Bolt.git
-        sha256: 275849128d86951d4e531f7a7f9e26c05a791ae6c45e95be265a936cb9f7f73d
+        commit: f0e81cb925e08c391c5ff04b4137264be22b4717
+  - name: zypak
+    sources:
+      - type: git
+        url: https://github.com/refi64/zypak
+        tag: v2022.04
+        commit: 55a60d110301e8dd37b631503c3524ab7baaf7aa
